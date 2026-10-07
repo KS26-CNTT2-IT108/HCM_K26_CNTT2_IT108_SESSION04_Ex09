@@ -1,0 +1,20 @@
+SESSION04
+Bài 9: Xử lý sự cố bảo mật file trên Server OrderTech bằng Terminal
+
+Tên lớp: HCM K26 CNTT2
+Môn học: Nhập môn công nghệ thông tin
+Họ và tên: LƯƠNG THANH THƯ
+
+PowerShell
+pwd                                               => Bước 1: xác định vị trí
+ls .\public                                       => Bước 2: xác nhận file nhạy cảm và file mã độc
+mkdir .\secrets                                   => Bước 3a: tạo thư mục an toàn
+Move-Item .\public\db_password.txt .\secrets\     => Bước 3b: di chuyển file mật khẩu
+Remove-Item .\public\hacker_log.bat               => Bước 4: xóa file mã độc             
+
+Giải thích:
+Bước 1 (pwd): cho biết đang đứng ở đâu trên máy chủ trước khi thao tác, tránh làm nhầm thư mục.
+Bước 2 (ls .\public): liệt kê file trong public để thấy db_password.txt và hacker_log.bat có thật ở đó.
+Bước 3a (mkdir .\secrets): tạo secrets ngang hàng với public. Phải làm trước khi di chuyển.
+Bước 3b (Move-Item): chuyển db_password.txt từ public vào secrets.
+Bước 4 (Remove-Item): xóa vĩnh viễn hacker_log.bat.
